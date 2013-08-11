@@ -38,6 +38,12 @@ module Transmission
         yield resp if block_given?
       end
     end
+    
+    def send_request(method, attributes={})
+      request(method, attributes) do |resp|
+        yield resp if block_given?
+      end
+    end
 
     def build_json(method,attributes = {})
       if attributes.length == 0
