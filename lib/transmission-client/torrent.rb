@@ -96,7 +96,7 @@ module Transmission
         raise "Attribute not yet supported."
       elsif m[-1..-1] == '='
         if SETABLE_ATTRIBUTES.include? m[0..-2]
-          Connection.send_request('torrent-set', {'ids' => [@attributes['id']], m[0..-2] => args.first})
+          @connection.send('torrent-set', {'ids' => [@attributes['id']], m[0..-2] => args.first})
         else
           raise "Invalid Attribute."
         end
